@@ -8,6 +8,20 @@ class Lesson < ActiveRecord::Base
   def next
     current_num = self.number
     new_lesson = Lesson.find_by(number: current_num+1, section_id: self.section_id)
-    new_lesson
+    if new_lesson
+      new_lesson
+    else
+      "This course is currently not available."
+    end
+  end
+
+  def previous
+    current_num = self.number
+    new_lesson = Lesson.find_by(number: current_num-1, section_id: self.section_id)
+    if new_lesson
+      new_lesson
+    else
+      "This course is currently not available."
+    end
   end
 end
