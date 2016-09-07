@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+
+development:
+  <<: *default
+  database: learnhowtoprogram_development
+
+test:
+  <<: *default
+  database: learnhowtoprogram_test
+
+production:
+  <<: *default
+  database: learnhowtoprogram_production
+  username: learnhowtoprogram
+  password: <%= ENV['LEARNHOWTOPROGRAM_DATABASE_PASSWORD'] %>
